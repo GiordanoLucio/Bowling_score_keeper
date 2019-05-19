@@ -216,7 +216,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testGameAlmostPerfectScore1() throws InvalidInputException{
+	public void testGamePerfectScore() throws InvalidInputException{
 		ArrayList<Frame> listFrame = new ArrayList<Frame>();
 		listFrame.add(new Frame(10,0));
 		listFrame.add(new Frame(10,0));
