@@ -19,7 +19,12 @@ public class Frame {
 	}
 
 	public Frame(int first_throw) throws InvalidInputException{
-		this.first_throw = first_throw;
+		if(first_throw < 0 || first_throw > 10) {
+			throw new InvalidInputException();
+		}else{
+			this.first_throw = first_throw;
+		}
+		
 	}
 	public int getFirst_throw() {
 		return first_throw;

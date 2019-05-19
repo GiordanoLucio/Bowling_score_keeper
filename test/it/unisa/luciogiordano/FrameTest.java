@@ -11,6 +11,15 @@ public class FrameTest {
 		Frame frame = new Frame(2,4);
 		assertEquals(frame.getFirst_throw(), 2);
 	}
+	@Test(expected= InvalidInputException.class)
+	public void testFirstThrowExceptionMoreThan10() throws InvalidInputException{
+		new Frame(15);
+	}
+	@Test(expected= InvalidInputException.class)
+	public void testFirstThrowExceptionLessThan0() throws InvalidInputException{
+		new Frame(-1);
+	}
+	
 	@Test
 	public void testSecondThrow() throws InvalidInputException {
 		Frame frame = new Frame(2,4);
@@ -25,6 +34,11 @@ public class FrameTest {
 	public void testTotalScore2() throws InvalidInputException{
 		Frame frame = new Frame(2,6);
 		assertEquals(frame.get_total_score(), 8);
+	}
+	@Test
+	public void testTotalScore3() throws InvalidInputException{
+		Frame frame = new Frame(0,9);
+		assertEquals(frame.get_total_score(), 9);
 	}
 	
 	@Test(expected = InvalidInputException.class)
@@ -51,7 +65,11 @@ public class FrameTest {
 	public void testGameScoreWithWrongStrike() throws InvalidInputException {
 		new Frame(10,1);
 	}
-	
+	@Test
+	public void isSpareWithZeroTen() throws InvalidInputException{
+	Frame frame = new Frame(0, 10);
+	assertTrue(frame.isSpare());
+	}
 	@Test
 	public void testSpareFirstIsGreater() throws InvalidInputException{
 		Frame frame = new Frame(9,1);

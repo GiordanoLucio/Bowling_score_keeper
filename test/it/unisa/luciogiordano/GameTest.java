@@ -80,7 +80,7 @@ public class GameTest {
 		assertEquals(game.getScore(), 103);
 	}
 	@Test
-	public void testGameWithMultipleStrike() throws InvalidInputException{
+	public void testGameWithMultipleStrikes() throws InvalidInputException{
 		ArrayList<Frame> listFrame = new ArrayList<Frame>();
 		listFrame.add(new Frame(10,0));
 		listFrame.add(new Frame(10,0));
@@ -113,7 +113,7 @@ public class GameTest {
 		assertEquals(game.getScore(), 98);
 	}
 	@Test
-	public void testGameWithMultipleSparesLastIsSpare() throws InvalidInputException{
+	public void testGameSpareAsTheLastFrame() throws InvalidInputException{
 		ArrayList<Frame> listFrame = new ArrayList<Frame>();
 		listFrame.add(new Frame(1,5));
 		listFrame.add(new Frame(3,6));
@@ -129,7 +129,7 @@ public class GameTest {
 		assertEquals(game.getScore(), 90);
 	}
 	@Test
-	public void testGameWithMultipleSparesLastIsStrike() throws InvalidInputException{
+	public void testGameStrikeAsTheLastFrame() throws InvalidInputException{
 		ArrayList<Frame> listFrame = new ArrayList<Frame>();
 		listFrame.add(new Frame(1,5));
 		listFrame.add(new Frame(3,6));
@@ -143,6 +143,37 @@ public class GameTest {
 		listFrame.add(new Frame(10,0));
 		game = new Game(listFrame, new Frame(7,2));
 		assertEquals(game.getScore(), 92);
+	}
+	public void testGameBonusIsAStrike() throws InvalidInputException{
+		ArrayList<Frame> listFrame = new ArrayList<Frame>();
+		listFrame.add(new Frame(1,5));
+		listFrame.add(new Frame(3,6));
+		listFrame.add(new Frame(7,2));
+		listFrame.add(new Frame(3,6));
+		listFrame.add(new Frame(4,4));
+		listFrame.add(new Frame(5,3));
+		listFrame.add(new Frame(3,3));
+		listFrame.add(new Frame(4,5));
+		listFrame.add(new Frame(8,1));
+		listFrame.add(new Frame(2,8));
+		game = new Game(listFrame, new Frame(10));
+		assertEquals(game.getScore(), 93);
+	}
+	@Test
+	public void testGamePerfectScore() throws InvalidInputException{
+		ArrayList<Frame> listFrame = new ArrayList<Frame>();
+		listFrame.add(new Frame(10,0));
+		listFrame.add(new Frame(10,0));
+		listFrame.add(new Frame(10,0));
+		listFrame.add(new Frame(10,0));
+		listFrame.add(new Frame(10,0));
+		listFrame.add(new Frame(10,0));
+		listFrame.add(new Frame(10,0));
+		listFrame.add(new Frame(10,0));
+		listFrame.add(new Frame(10,0));
+		listFrame.add(new Frame(10,0));
+		game = new Game(listFrame, new Frame(10), new Frame(10));
+		assertEquals(game.getScore(), 300);
 	}
 
 	@Test
@@ -197,6 +228,7 @@ public class GameTest {
 		assertEquals(game.getScore(), 98);
 	}
 
+
 	@Test
 	public void testGameWithRealData() throws InvalidInputException{
 		ArrayList<Frame> listFrame = new ArrayList<Frame>();
@@ -216,20 +248,20 @@ public class GameTest {
 	}
 
 	@Test
-	public void testGamePerfectScore() throws InvalidInputException{
+	public void testAllSpare() throws InvalidInputException{
 		ArrayList<Frame> listFrame = new ArrayList<Frame>();
-		listFrame.add(new Frame(10,0));
-		listFrame.add(new Frame(10,0));
-		listFrame.add(new Frame(10,0));
-		listFrame.add(new Frame(10,0));
-		listFrame.add(new Frame(10,0));
-		listFrame.add(new Frame(10,0));
-		listFrame.add(new Frame(10,0));
-		listFrame.add(new Frame(10,0));
-		listFrame.add(new Frame(10,0));
-		listFrame.add(new Frame(10,0));
-		game = new Game(listFrame, new Frame(10), new Frame(10));
-		assertEquals(game.getScore(), 300);
+		listFrame.add(new Frame(0,10));
+		listFrame.add(new Frame(0,10));
+		listFrame.add(new Frame(0,10));
+		listFrame.add(new Frame(0,10));
+		listFrame.add(new Frame(0,10));
+		listFrame.add(new Frame(0,10));
+		listFrame.add(new Frame(0,10));
+		listFrame.add(new Frame(0,10));
+		listFrame.add(new Frame(0,10));
+		listFrame.add(new Frame(0,10));
+		game = new Game(listFrame, new Frame(10));
+		assertEquals(game.getScore(), 110);
 	}
 
 }
